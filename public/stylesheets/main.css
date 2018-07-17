@@ -1,0 +1,48 @@
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
+    color: white;
+}
+
+/* leftover from yelpcamp*/
+.thumbnail img {
+    width: 100%;
+}
+.thumbnail {
+    padding: 0;
+}
+.thumbnail .caption-full {
+    padding: 9px 20px;
+}
+
+.deleteForm {
+    display: inline;
+}
+li {
+    list-style-type: none;
+}
+
+/* comment reply form */
+#reply * {
+    text-align: center;
+}
+
+/* when a comment has children */
+li + ul {
+    border-left: solid rgb(204, 204, 204) 2px;
+}
+
+/* COMMENT */
+div.comment {
+    padding: 4px;
+    border: solid grey 1px;
+    margin-top: 1em;
+}
+div.comment p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+/* Comment Reply Dropdown */
+div.well {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
