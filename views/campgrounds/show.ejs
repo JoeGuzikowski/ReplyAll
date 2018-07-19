@@ -7,10 +7,10 @@
         <div class="col-md-12">
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= campground.image %>">
-            
+
                 <div class="caption-full">
                     <h4> <a><%= campground.name %></a> </h4>
-                    <p> <%= campground.description %> </p>
+                    <p> <%- campground.description %> </p>
                     <p> 
                         <em> Submitted by <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %> </em>
                     </p>

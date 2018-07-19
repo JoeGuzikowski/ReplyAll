@@ -105,7 +105,6 @@ router.get("/:comment_id/reply", middleware.isLoggedIn, function(req, res){
                     console.log(err);
                 }
                 else {
-                    console.log("SOON TO BE PARENT: " + parentComment.text);
                     res.render("comments/reply", {campground: campground, parentComment: parentComment});
                 }
             });
@@ -138,6 +137,8 @@ router.post("/:comment_id/reply", middleware.isLoggedIn, function(req, res){
                     //save comment
                     parentComment.children.push(comment);
                     parentComment.save();
+
+                    req.flash("success", "Successfully replied to " + parentComment.author.username);
                     res.redirect("/campgrounds/"+req.params.id);
                 }
             });

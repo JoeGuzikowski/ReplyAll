@@ -1,0 +1,53 @@
+
+
+<%    recursiveTest = function(num, string){            %>
+<%    if (num === 0){    %>
+<%        return string; %>
+<%    }                  %>
+<%                       %>
+<%     string +=  "<li>This is a test</li>";            %>
+<%     return recursiveTest(num - 1, string);           %>
+<%    }                                                 %>
+
+<%    printChildren = function(parentComment, allComments){      %>
+    <%    var string = "<li>"+"<div class=\"row\"> <div class=\"col-md-12\ comment\"> <strong>"+ parentComment.author.username + "</strong> <span class=\"pull-right\">" + moment(parentComment.createdAt).fromNow() +" </span> <p> "+ parentComment.text +" </p> <a class=\"btn btn-xs btn-primary\" href=\"/campgrounds/5b46b9e37cf301baffab1d1e/comments/"+ parentComment._id +"/reply\"> Reply </a>"; %>
+    <!--  ========== EDIT ===========              -->
+    <% if (currentUser && parentComment.author.id.equals(currentUser._id) ) { %>
+        <% string += "<a class=\"btn btn-xs btn-warning\" href=\"/campgrounds/5b46b9e37cf301baffab1d1e/comments/"+ parentComment._id +"/edit\" > Edit </a>" %>
+    <% } %>
+    <!-- =========== REPLY DROPDOWN =========== -->
+    <% string += "<div class=\"text-right\"> <a href=\"#comment"+ parentComment._id+"\" class=\"btn btn-success pull-right\" role=\"button\" data-toggle=\"collapse\" aria-expanded=\"false\" aria-controls=\"collapseComment\"> <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span> Reply </a></div>" %>
+    <% string += "<div class=\"collapse\" id=\"comment"+ parentComment._id +"\"> <div class=\"well\" style=\"border-left: 5px solid #00C851;\">" %>
+    <%        if(!currentUser) { %>
+    <!--If the user is not logged in, direct him to the login page--> 
+    <%            string += "<h5>You need to login before you can comment. <a href=\"/login\">Click here</a> to go to the login page.</h5>" %>
+    <%        }                     %>
+    <%        if(currentUser) {     %>
+                  <!--If the user is logged in, show the new comment form-->
+    <%            string += "<h4>Write your comment <span class=\"glyphicon glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></h4> <form action=\"/campgrounds/"+campground._id+"/comments/"+ parentComment._id +"/reply\" method=\"POST\">" %>
+    <%            string += "<div class=\"form-group\"> <textarea name=\"commentReply_"+parentComment._id.toString()+"\" class=\"form-control\" placeholder=\"Write your reply...\" form=\"add-comment-form\" rows=\"5\" cols=\"70\" enctype=\"text/plain\"></textarea>" %>
+    <%            string += "</div> <div class=\"form-group\"> <button formaction=\"/campgrounds/"+campground._id+"/comments/"+ parentComment._id +"/reply\" type=\"submit\"class=\"btn btn-success btn-sm\">Comment <span class=\"glyphicon glyphicon-comment\" aria-hidden=\"true\"></span></button> </div> </form>" %>
+    <%        } %>
+    <% string += "</div> </div>" %>
+    <!-- =============== END REPLY DROP DOWN ================ -->    
+
+
+    <%        string += "</div> </div> </li>";  %>
+    
+    <%    if (parentComment.children.length === 0){                  %>
+    <%          return string;                                      %>
+    <%    }                                                         %>
+    <%     // comment has kids                                      %>
+    <%     string +=  "<ul>";                                       %>
+    <%     for(var i = 0; i < parentComment.children.length; i++ ){        %>
+    <%          //find parents child in udpated array, via ID stored in parent children array      %>
+    <%          var child = allComments.find(function(e){   %>
+    <%                if (e._id.equals(parentComment.children[i] )){        %>
+    <%                    return e;                                         %>
+    <%                }                                                     %>
+    <%          });                                        %>
+    <%          string += printChildren(child, allComments);        %>
+    <%     }                                               %>
+    <%     string += "</ul> </li>";                          %>
+    <%     return string;                                    %>
+<%    }                                                  %>
