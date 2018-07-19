@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var shuffleSeed = require("shuffle-seed");
 
 var User = require("../models/user");
 var Campground = require("../models/campground");
@@ -58,7 +59,9 @@ router.get("/:id", function(req, res){
         }
         else {
             Comment.find(function(err, allComments){
-                res.render("posts/show", {campground: foundCampground, threads: allComments});
+                //shuffle comments every hour
+                var shuffledComments = shuffleSeed.shuffle(allComments, (new Date()).getHours());
+                res.render("posts/show", {campground: foundCampground, threads: shuffledComments});
             });
         }
     });

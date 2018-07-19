@@ -4,7 +4,7 @@
     <!--  ========== EDIT =========== -->
     <% if (currentUser && parentComment.author.id.equals(currentUser._id) ) { %>
     <%     string += "<a class=\"btn btn-xs btn-warning\" href=\"/posts/"+ campground._id +"/comments/"+ parentComment._id +"/edit\" > Edit </a>" %>
-    <%     string += "<button formaction=\"/posts/"+ campground._id +"/comments/"+ parentComment._id +"?_method=DELETE\" class=\"btn btn-xs btn-danger\"> Delete </button>"; %>
+    <%     //string += "<button formaction=\"/posts/"+ campground._id +"/comments/"+ parentComment._id +"?_method=DELETE\" class=\"btn btn-xs btn-danger\"> Delete </button>"; %>
     <% } %>
 
     <!-- =========== REPLY DROPDOWN =========== -->
@@ -71,3 +71,4 @@
 <%      }                                                             %>
 <%      return (1 + num);                                             %>
 <% }                                                                  %>
+

@@ -77,9 +77,10 @@
                         </div>
                     </div>
                 <% }); %>-->
+                <% var topComments = new Array(); %>
                 <% threads.forEach( function(comment) { %>
                 <%      if (comment.level === 0) {              %>
-                <%-         printChildren(comment, threads);    %>
+                <%-         printChildren(comment, threads);           %>
                 <%      }                                       %>
                 <% }); %>
                 </form>
