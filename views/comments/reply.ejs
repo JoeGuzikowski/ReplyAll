@@ -6,7 +6,7 @@
         <h4> <%= parentComment.author.username %> said: </h4>
         <h4> "<%= parentComment.text %>" </h4>
         <div style="width: 30%; margin: 25px auto">
-            <form action="/campgrounds/<%= campground._id %>/comments/<%= parentComment._id %>/reply" method = "POST">
+            <form action="/posts/<%= campground._id %>/comments/<%= parentComment._id %>/reply" method = "POST">
                 <div class="form-group">
                     <textarea class="form-control" name="commentReply_<%= parentComment._id.toString() %>" placeholder="Write your comment..." rows="5" cols="70"></textarea>
                 </div>
@@ -15,7 +15,7 @@
                 </div>
             </form>
 
-            <a href="/campgrounds/<%= campground._id %>"> Go Back </a>
+            <a href="/posts/<%= campground._id %>"> Go Back </a>
         </div>
     </div>
 </div>

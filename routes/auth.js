@@ -30,7 +30,7 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to YelpCamp "+req.body.username);
-            res.redirect("/campgrounds");
+            res.redirect("/posts");
         });
     });
 });
@@ -42,7 +42,7 @@ router.get("/login", function(req, res){
 
 router.post("/login", passport.authenticate("local",
     {//this method is from passport-local-mongoose package
-        successRedirect: "/campgrounds",
+        successRedirect: "/posts",
         failureRedirect: "/login"
     })/*, function(req, res){ // don't need this
 }*/);

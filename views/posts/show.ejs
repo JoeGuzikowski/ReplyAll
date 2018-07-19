@@ -16,8 +16,8 @@
                     </p>
                     <!--  is there a current user && does user own campground? -->
                     <% if(currentUser && campground.author.id.equals( currentUser._id )){%>
-                    <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit"> Edit </a>
-                    <form class="deleteForm" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                    <a class="btn btn-warning" href="/posts/<%= campground._id %>/edit"> Edit </a>
+                    <form class="deleteForm" action="/posts/<%= campground._id %>?_method=DELETE" method="POST">
                         <button class="btn btn-danger">Delete</button>
                     </form>
                     <% } %>
@@ -43,7 +43,7 @@
                         <% if(currentUser) { %>
                             <!--If the user is logged in, show the new comment form-->
                             <h4>Write your comment <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></h4>
-                            <form id="add-comment-form" action="/campgrounds/<%= campground._id %>/comments" method="POST">
+                            <form id="add-comment-form" action="/posts/<%= campground._id %>/comments" method="POST">
                                 <div class="form-group">
                                     <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70"></textarea>
                                 </div>
@@ -64,14 +64,14 @@
                             <p> 
                                 <%= comment.text%> 
                             </p>
-                            <a class="btn btn-xs btn-default" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/reply">
+                            <a class="btn btn-xs btn-default" href="/posts/<%= campground._id %>/comments/<%= comment._id %>/reply">
                                 Reply
                             </a>
                             <% if (currentUser && comment.author.id.equals(currentUser._id) ) { %>
-                                <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" > 
+                                <a class="btn btn-xs btn-warning" href="/posts/<%=campground._id%>/comments/<%=comment._id%>/edit" > 
                                     Edit 
                                 </a>
-                                <form class="deleteForm" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <form class="deleteForm" action="/posts/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                     <button class="btn btn-xs btn-danger"> Delete </button>
                                     <!-- <input type="submit" class="deleteForm btn btn-xs btn-danger" value="Delete"> -->
                             <!-- <% } %>

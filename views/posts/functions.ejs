@@ -1,9 +1,10 @@
 
 <% printChildren = function(parentComment, allComments){      %>
-    <% var string = "<li>"+"<div class=\"row\"> <div class=\"col-md-12\ comment\"> <strong>"+ parentComment.author.username + "</strong> <span class=\"pull-right\">" + moment(parentComment.createdAt).fromNow() +" </span> <p> "+ parentComment.text +" </p>"; //<a class=\"btn btn-xs btn-primary\" href=\"/campgrounds/5b46b9e37cf301baffab1d1e/comments/"+ parentComment._id +"/reply\"> Reply </a>"; %>
+    <% var string = "<li>"+"<div class=\"row\"> <div class=\"col-md-12\ comment\"> <strong>"+ parentComment.author.username + "</strong> <span class=\"pull-right\">" + moment(parentComment.createdAt).fromNow() +" </span> <p> "+ parentComment.text +" </p>"; //<a class=\"btn btn-xs btn-primary\" href=\"/posts/5b46b9e37cf301baffab1d1e/comments/"+ parentComment._id +"/reply\"> Reply </a>"; %>
     <!--  ========== EDIT =========== -->
     <% if (currentUser && parentComment.author.id.equals(currentUser._id) ) { %>
-        <% string += "<a class=\"btn btn-xs btn-warning\" href=\"/campgrounds/5b46b9e37cf301baffab1d1e/comments/"+ parentComment._id +"/edit\" > Edit </a>" %>
+    <%     string += "<a class=\"btn btn-xs btn-warning\" href=\"/posts/"+ parentComment._id +"/comments/"+ parentComment._id +"/edit\" > Edit </a>" %>
+    <%     string += "<button formaction=\"/posts/"+ campground._id +"/comments/"+ parentComment._id +"?_method=DELETE\" class=\"btn btn-xs btn-danger\"> Delete </button>"; %>
     <% } %>
 
     <!-- =========== REPLY DROPDOWN =========== -->
@@ -15,9 +16,9 @@
     <% }                     %>
     <% if(currentUser) {     %>
     <!--If the user is logged in, show the new comment form-->
-    <%     string += "<h4>Write your comment <span class=\"glyphicon glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></h4>" /* <form action=\"/campgrounds/"+campground._id+"/comments/"+ parentComment._id +"/reply\" method=\"POST\">" */ %>
+    <%     string += "<h4>Write your comment <span class=\"glyphicon glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></h4>" /* <form action=\"/posts/"+campground._id+"/comments/"+ parentComment._id +"/reply\" method=\"POST\">" */ %>
     <%     string += "<div class=\"form-group\"> <textarea name=\"commentReply_"+parentComment._id.toString()+"\" class=\"form-control\" placeholder=\"Write your reply...\" form=\"add-comment-form\" rows=\"5\" cols=\"70\" enctype=\"text/plain\"></textarea>" %>
-    <%     string += "</div> <div class=\"form-group\"> <button formaction=\"/campgrounds/"+campground._id+"/comments/"+ parentComment._id +"/reply\" type=\"submit\"class=\"btn btn-primary btn-sm\">Reply <span class=\"glyphicon glyphicon-comment\" aria-hidden=\"true\"></span></button> </div>"// </form>" %>
+    <%     string += "</div> <div class=\"form-group\"> <button formaction=\"/posts/"+campground._id+"/comments/"+ parentComment._id +"/reply\" type=\"submit\"class=\"btn btn-primary btn-sm\">Reply <span class=\"glyphicon glyphicon-comment\" aria-hidden=\"true\"></span></button> </div>"// </form>" %>
     <% }                                                                %>
     <% string += "</div> </div>" %>
     <!-- =============== END REPLY DROP DOWN ================ -->   
