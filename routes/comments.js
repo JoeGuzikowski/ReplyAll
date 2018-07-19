@@ -74,6 +74,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
         }
         else {
             req.flash("success", "Comment edited.");
+            console.log("comment edited.");
             res.redirect("/posts/"+req.params.id);
         }
     });

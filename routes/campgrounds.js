@@ -53,7 +53,8 @@ router.get("/:id", function(req, res){
     //populate fills IDs with the actual comments in the DB array
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if (err) {
-            console.log(err);
+            req.flash("error", "Couldn't find post for show. ");
+            res.redirect("/posts");
         }
         else {
             Comment.find(function(err, allComments){

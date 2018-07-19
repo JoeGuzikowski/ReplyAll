@@ -30,7 +30,7 @@ router.post("/register", function(req, res){
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function(){
-            req.flash("success", "Welcome to YelpCamp "+req.body.username);
+            req.flash("success", "Welcome to ReplyAll "+req.body.username);
             res.redirect("/posts");
         });
     });
@@ -44,13 +44,18 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local",
     {//this method is from passport-local-mongoose package
         successRedirect: "/posts",
-        failureRedirect: "/login"
-    })/*, function(req, res){ // don't need this
-}*/);
+        failureRedirect: "/login",
+        failureFlash: true
+    }));
 
 router.get("/logout", function(req,res){
     req.logout();
     req.flash("success","Logged you out!");
+    res.redirect("/");
+});
+
+router.get("*", function(req, res){
+    req.flash("error","Oops. There didn't seem to be anything there. ");
     res.redirect("/");
 });
 
