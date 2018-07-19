@@ -8,7 +8,8 @@ var Comment = require("../models/comment");
 
 // =========== ROOT =========== 
 router.get("/", function(req, res){
-    res.render("landing");
+    res.redirect("posts/5b4fe94358fb0b70e605a789");
+    //res.render("landing");
 });
 
 // ===========

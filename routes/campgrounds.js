@@ -10,14 +10,15 @@ var middleware = require("../middleware");//automatically requires index.js
 
 // =========== INDEX =========== 
 router.get("/", function(req, res){
-    // get all posts from db
-    Campground.find({}, function(err, posts){
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("posts/index", {posts: posts, currentUser: req.user});
-        }
-    });
+    res.redirect("posts/5b4fe94358fb0b70e605a789");
+    // // get all posts from db
+    // Campground.find({}, function(err, posts){
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         res.render("posts/index", {posts: posts, currentUser: req.user});
+    //     }
+    // });
 });
 
 // =========== NEW =========== 
