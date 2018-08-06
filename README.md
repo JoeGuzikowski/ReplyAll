@@ -1,6 +1,6 @@
 Hi!
 
-This is ReplyAll, basically a clone of a Reddit post with threaded comments created with NodeJS/Express, mongoDB, and EJS.
+This is ReplyAll, basically a clone of a Reddit post with threaded comments. This was created with NodeJS/Express, mongoDB, and EJS.
 
 Features to be added: 
     - create new posts
