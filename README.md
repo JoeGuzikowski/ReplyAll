@@ -2,7 +2,7 @@ Hi!
 
 This is ReplyAll, a clone of a Reddit post with threaded comments. This was created with NodeJS/Express, mongoDB, and EJS.
 
-<em> Technologies Used </em>
+<bold> Technologies Used: </bold>
 <ul> 
     <li> body-parser: ^1.18.3,</li>
     <li> connect-flash: ^0.1.1,  </li>
@@ -18,8 +18,8 @@ This is ReplyAll, a clone of a Reddit post with threaded comments. This was crea
     <li> shuffle-seed: ^1.1.6 </li>
 </ul>
 
+<bold> Features to be addedL </bold>
 <ul>
-Features to be added: 
     <li> storage of more than one post </li> 
     <li> cleansing of input text </li> 
     <li> comment voting </li> 
