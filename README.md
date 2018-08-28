@@ -18,7 +18,7 @@ This is ReplyAll, a clone of a Reddit post with threaded comments. This was crea
     <li> shuffle-seed: ^1.1.6 </li>
 </ul>
 
-<bold> Features to be addedL </bold>
+<bold> Features to be added: </bold>
 <ul>
     <li> storage of more than one post </li> 
     <li> cleansing of input text </li> 
