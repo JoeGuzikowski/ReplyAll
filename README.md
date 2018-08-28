@@ -2,8 +2,8 @@ Hi!
 
 This is ReplyAll, basically a clone of a Reddit post with threaded comments. This was created with NodeJS/Express, mongoDB, and EJS.
 
-Technologies Used
-    body-parser: ^1.18.3,
+<ul> Technologies Used
+    <li> body-parser: ^1.18.3,</li>
     connect-flash: ^0.1.1,
     ejs: ^2.6.1,
     express: ^4.16.3,
@@ -15,6 +15,7 @@ Technologies Used
     passport-lcal: ^1.0.0,
     passport-local-mongoose: ^5.0.1,
     shuffle-seed: ^1.1.6
+</ul>
 
 Features to be added: 
     - storage of more than one post
